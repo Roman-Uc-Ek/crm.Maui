@@ -24,7 +24,7 @@
             IsRefreshing="{Binding Path=Refreshing}"
             Command="{Binding Path=LoadCustomersCommand}">
             <CollectionView
-                ItemsSource="{Binding Path=Customers}"
+                ItemsSource="{Binding Path=Custumers}"
                 EmptyView="Aun no se han registrado clientes"
                >
                 <CollectionView.ItemTemplate>
@@ -50,6 +50,7 @@
         </RefreshView>
         <Button
             Text="+"
+            Command="{Binding Path=ShowNewCustomerForCommand}"
             WidthRequest="56"
             HeightRequest="56"
             FontSize="24"

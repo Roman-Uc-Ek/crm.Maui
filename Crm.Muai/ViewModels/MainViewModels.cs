@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Crm.Muai.Models;
 using Crm.Muai.Persistence;
+using Crm.Muai.Views;
 using System.Collections.ObjectModel;
 
 namespace Crm.Muai.ViewModels
@@ -22,7 +23,8 @@ namespace Crm.Muai.ViewModels
                 {
                     using CrmDbContext dbContext = new CrmDbContext();
 
-                    Customers = new ObservableCollection<Customer>(dbContext.Custumers);
+                    Customers = new ObservableCollection<Customer>
+                    (dbContext.Custumers);
 
                     Refreshing = false;
                 });
@@ -31,6 +33,24 @@ namespace Crm.Muai.ViewModels
         private void Showing()
         {
             Refreshing = true;
+        }
+        [RelayCommand]
+        private async Task ShowNewCustomerForAsync()
+        {
+           await Shell.Current.GoToAsync(
+               nameof(CustomerEditPage), 
+               parameters:new Dictionary<string,object>
+           {
+                   {"ParameterRefreshAction", (Func<Customer,Task>)RefreshAddedAsync},
+                   {"Item", new Customer() },
+           });
+
+
+        }
+        private Task RefreshAddedAsync(Customer AddedCustomer) 
+        {
+            Customers.Add(AddedCustomer);
+            return  Task.CompletedTask;
         }
     }
 }
