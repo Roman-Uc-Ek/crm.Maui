@@ -19,7 +19,7 @@ namespace Crm.Muai.ViewModels
                 {
                     Cust = (Customer) currentCustomer;
                 }
-                if (query.TryGetValue("ParameterRefreshsAction", out object? parentRefreshAction))
+                if (query.TryGetValue("ParameterRefreshAction", out object? parentRefreshAction))
                 {
                     ParentRefreshAcction=(Func<Customer, Task>) parentRefreshAction;
                 }
@@ -32,7 +32,7 @@ namespace Crm.Muai.ViewModels
         {
             //Guardamos en la base de datos
             using CrmDbContext dbContext = new CrmDbContext();
-            await dbContext.Custumers.AddAsync(Cust);
+            await dbContext.Customers.AddAsync(Cust);
             //Agregamos al nuevo clienta a la coleccion Customer de la pantalla
             //padre invocando a ParentRefrestAction
 

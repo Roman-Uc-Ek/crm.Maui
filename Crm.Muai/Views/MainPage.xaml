@@ -14,7 +14,7 @@
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior
             EventName="Appearing"
-            Command="{Binding Path=ShowinfCommand}"
+            Command="{Binding Path=ShowingCommand}"
             BindingContext="{Binding Source={x:Reference Page}, Path=BindingContext}"
             />
     </ContentPage.Behaviors>
@@ -24,7 +24,7 @@
             IsRefreshing="{Binding Path=Refreshing}"
             Command="{Binding Path=LoadCustomersCommand}">
             <CollectionView
-                ItemsSource="{Binding Path=Custumers}"
+                ItemsSource="{Binding Path=Customers}"
                 EmptyView="Aun no se han registrado clientes"
                >
                 <CollectionView.ItemTemplate>

@@ -23,12 +23,13 @@ namespace Crm.Muai.ViewModels
                 {
                     using CrmDbContext dbContext = new CrmDbContext();
 
-                    Customers = new ObservableCollection<Customer>
-                    (dbContext.Custumers);
+                    this.Customers = new ObservableCollection<Customer>
+                    (dbContext.Customers);
 
                     Refreshing = false;
                 });
         }
+
         [RelayCommand]
         private void Showing()
         {

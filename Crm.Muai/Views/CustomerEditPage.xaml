@@ -4,6 +4,7 @@
              xmlns:viewmodel="clr-namespace:Crm.Muai.ViewModels"
              x:Class="Crm.Muai.Views.CustomerEditPage"
              Title="Nuevo Contacto">
+    
     <ContentPage.BindingContext>
         <viewmodel:CustumerEditViewModel/>
     </ContentPage.BindingContext>

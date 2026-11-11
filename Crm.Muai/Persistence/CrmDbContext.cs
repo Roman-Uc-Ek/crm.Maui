@@ -6,7 +6,7 @@ namespace Crm.Muai.Persistence
     public class CrmDbContext : DbContext
     {
         //Entidades
-        public DbSet<Customer> Custumers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -20,6 +20,7 @@ namespace Crm.Muai.Persistence
         {
             //base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Customer>()
+                .ToTable("Customers")
                 .HasData(
                 new Customer
                 {
