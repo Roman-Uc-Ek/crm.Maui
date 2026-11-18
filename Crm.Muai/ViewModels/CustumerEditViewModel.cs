@@ -34,6 +34,7 @@ namespace Crm.Muai.ViewModels
             using CrmDbContext dbContext = new CrmDbContext();
             await dbContext.Customers.AddAsync(Cust);
             //Agregamos al nuevo clienta a la coleccion Customer de la pantalla
+            await dbContext.SaveChangesAsync();
             //padre invocando a ParentRefrestAction
 
             await ParentRefreshAcction(Cust);

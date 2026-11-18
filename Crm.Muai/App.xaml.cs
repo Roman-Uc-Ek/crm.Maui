@@ -9,6 +9,8 @@ namespace Crm.Muai
         {
             SQLitePCL.Batteries_V2.Init();
             using var context = new CrmDbContext();
+            context.Database.EnsureCreated();
+            
             InitializeComponent();
         }
 
