@@ -19,7 +19,7 @@ namespace Crm.Muai.ViewModels
         private async Task LoadCustomersAsync()
         {
             await Task.Run(
-                ()=>
+                () =>
                 {
                     using CrmDbContext dbContext = new CrmDbContext();
 
@@ -38,20 +38,41 @@ namespace Crm.Muai.ViewModels
         [RelayCommand]
         private async Task ShowNewCustomerForAsync()
         {
-           await Shell.Current.GoToAsync(
-               nameof(CustomerEditPage), 
-               parameters:new Dictionary<string,object>
-           {
+            await Shell.Current.GoToAsync(
+                nameof(CustomerEditPage),
+                parameters: new Dictionary<string, object>
+            {
                    {"ParameterRefreshAction", (Func<Customer,Task>)RefreshAddedAsync},
                    {"Item", new Customer() },
-           });
+            });
 
 
         }
-        private Task RefreshAddedAsync(Customer AddedCustomer) 
+        private Task RefreshAddedAsync(Customer AddedCustomer)
         {
             Customers.Add(AddedCustomer);
-            return  Task.CompletedTask;
+            return Task.CompletedTask;
         }
+        [RelayCommand]
+        public void DeleteCustomer(Customer customer)
+        {
+            using var dbContext = new CrmDbContext();
+            dbContext.Customers.Remove(customer);
+            dbContext.SaveChanges();
+
+            Customers.Remove(customer);
+        }
+        [RelayCommand]
+        public async Task ShowDetailFormAsync(Customer customer)
+        {
+            await Shell.Current.GoToAsync(
+               nameof(CustomerDetailPage),
+               parameters: new Dictionary<string, object>
+           {
+                  // {"ParentRefreshAction", (Func<Customer,Task>)RefreshEditeAddedAsync},
+                   {"Item", customer},
+           });
+        }
+        
     }
 }

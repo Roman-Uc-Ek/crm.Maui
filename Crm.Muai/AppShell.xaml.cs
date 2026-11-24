@@ -9,8 +9,12 @@ namespace Crm.Muai
             InitializeComponent();
 
             //Registrar las rutas que estan en la jerarquia visual del Shell
-            Routing.RegisterRoute(nameof(CustomerEditPage),
+            Routing.RegisterRoute(
+                nameof(CustomerEditPage),
                 typeof(CustomerEditPage));
+            Routing.RegisterRoute(
+                nameof(CustomerDetailPage), 
+                typeof(CustomerDetailPage));
         }
     }
 }

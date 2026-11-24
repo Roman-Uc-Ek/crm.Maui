@@ -9,8 +9,7 @@
         <viewmodel:CustumerEditViewModel/>
     </ContentPage.BindingContext>
     <Grid
-        Padding="8"
-        >
+        Padding="8">
         <VerticalStackLayout
             VerticalOptions="Start">
             <Label 
